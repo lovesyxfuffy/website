@@ -39,7 +39,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table schema="website" tableName="account" domainObjectName="Account"
+        <table schema="website" tableName="config" domainObjectName="Config"
                enableCountByExample="true" enableDeleteByExample="true"
                enableSelectByExample="true" enableUpdateByExample="true">
             <property name="useActualColumnNames" value="false"/>
@@ -47,29 +47,29 @@
             <ignoreColumn column="addTime" />
         </table>
 
-        <table schema="website" tableName="article" domainObjectName="Article"
-               enableCountByExample="true" enableDeleteByExample="true"
-               enableSelectByExample="true" enableUpdateByExample="true">
-            <property name="useActualColumnNames" value="false"/>
-            <ignoreColumn column="updateTime" />
-            <ignoreColumn column="addTime" />
-        </table>
+        <!--<table schema="website" tableName="article" domainObjectName="Article"-->
+               <!--enableCountByExample="true" enableDeleteByExample="true"-->
+               <!--enableSelectByExample="true" enableUpdateByExample="true">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<ignoreColumn column="updateTime" />-->
+            <!--<ignoreColumn column="addTime" />-->
+        <!--</table>-->
 
-        <table schema="website" tableName="department" domainObjectName="Department"
-               enableCountByExample="true" enableDeleteByExample="true"
-               enableSelectByExample="true" enableUpdateByExample="true">
-            <property name="useActualColumnNames" value="false"/>
-            <ignoreColumn column="updateTime" />
-            <ignoreColumn column="addTime" />
-        </table>
+        <!--<table schema="website" tableName="department" domainObjectName="Department"-->
+               <!--enableCountByExample="true" enableDeleteByExample="true"-->
+               <!--enableSelectByExample="true" enableUpdateByExample="true">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<ignoreColumn column="updateTime" />-->
+            <!--<ignoreColumn column="addTime" />-->
+        <!--</table>-->
 
-        <table schema="website" tableName="project" domainObjectName="Project"
-               enableCountByExample="true" enableDeleteByExample="true"
-               enableSelectByExample="true" enableUpdateByExample="true">
-            <property name="useActualColumnNames" value="false"/>
-            <ignoreColumn column="updateTime" />
-            <ignoreColumn column="addTime" />
-        </table>
+        <!--<table schema="website" tableName="project" domainObjectName="Project"-->
+               <!--enableCountByExample="true" enableDeleteByExample="true"-->
+               <!--enableSelectByExample="true" enableUpdateByExample="true">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<ignoreColumn column="updateTime" />-->
+            <!--<ignoreColumn column="addTime" />-->
+        <!--</table>-->
 
     </context>
 </generatorConfiguration>
