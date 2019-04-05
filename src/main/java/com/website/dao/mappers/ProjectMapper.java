@@ -31,9 +31,11 @@ public interface ProjectMapper {
 
     @Insert({
         "insert into project (id, projectName, ",
-        "articleLink, projectImgUrl)",
+        "projectSubtitle, articleLink, ",
+        "projectImgUrl)",
         "values (#{id,jdbcType=INTEGER}, #{projectname,jdbcType=VARCHAR}, ",
-        "#{articlelink,jdbcType=VARCHAR}, #{projectimgurl,jdbcType=VARCHAR})"
+        "#{projectsubtitle,jdbcType=VARCHAR}, #{articlelink,jdbcType=VARCHAR}, ",
+        "#{projectimgurl,jdbcType=VARCHAR})"
     })
     int insert(Project record);
 
@@ -44,6 +46,7 @@ public interface ProjectMapper {
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="projectName", property="projectname", jdbcType=JdbcType.VARCHAR),
+        @Result(column="projectSubtitle", property="projectsubtitle", jdbcType=JdbcType.VARCHAR),
         @Result(column="articleLink", property="articlelink", jdbcType=JdbcType.VARCHAR),
         @Result(column="projectImgUrl", property="projectimgurl", jdbcType=JdbcType.VARCHAR)
     })
@@ -51,13 +54,14 @@ public interface ProjectMapper {
 
     @Select({
         "select",
-        "id, projectName, articleLink, projectImgUrl",
+        "id, projectName, projectSubtitle, articleLink, projectImgUrl",
         "from project",
         "where id = #{id,jdbcType=INTEGER}"
     })
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="projectName", property="projectname", jdbcType=JdbcType.VARCHAR),
+        @Result(column="projectSubtitle", property="projectsubtitle", jdbcType=JdbcType.VARCHAR),
         @Result(column="articleLink", property="articlelink", jdbcType=JdbcType.VARCHAR),
         @Result(column="projectImgUrl", property="projectimgurl", jdbcType=JdbcType.VARCHAR)
     })
@@ -75,6 +79,7 @@ public interface ProjectMapper {
     @Update({
         "update project",
         "set projectName = #{projectname,jdbcType=VARCHAR},",
+          "projectSubtitle = #{projectsubtitle,jdbcType=VARCHAR},",
           "articleLink = #{articlelink,jdbcType=VARCHAR},",
           "projectImgUrl = #{projectimgurl,jdbcType=VARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"

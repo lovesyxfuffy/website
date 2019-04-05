@@ -36,6 +36,10 @@ public class ProjectSqlProvider {
             sql.VALUES("projectName", "#{projectname,jdbcType=VARCHAR}");
         }
         
+        if (record.getProjectsubtitle() != null) {
+            sql.VALUES("projectSubtitle", "#{projectsubtitle,jdbcType=VARCHAR}");
+        }
+        
         if (record.getArticlelink() != null) {
             sql.VALUES("articleLink", "#{articlelink,jdbcType=VARCHAR}");
         }
@@ -55,6 +59,7 @@ public class ProjectSqlProvider {
             sql.SELECT("id");
         }
         sql.SELECT("projectName");
+        sql.SELECT("projectSubtitle");
         sql.SELECT("articleLink");
         sql.SELECT("projectImgUrl");
         sql.FROM("project");
@@ -82,6 +87,10 @@ public class ProjectSqlProvider {
             sql.SET("projectName = #{record.projectname,jdbcType=VARCHAR}");
         }
         
+        if (record.getProjectsubtitle() != null) {
+            sql.SET("projectSubtitle = #{record.projectsubtitle,jdbcType=VARCHAR}");
+        }
+        
         if (record.getArticlelink() != null) {
             sql.SET("articleLink = #{record.articlelink,jdbcType=VARCHAR}");
         }
@@ -100,6 +109,7 @@ public class ProjectSqlProvider {
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
         sql.SET("projectName = #{record.projectname,jdbcType=VARCHAR}");
+        sql.SET("projectSubtitle = #{record.projectsubtitle,jdbcType=VARCHAR}");
         sql.SET("articleLink = #{record.articlelink,jdbcType=VARCHAR}");
         sql.SET("projectImgUrl = #{record.projectimgurl,jdbcType=VARCHAR}");
         
@@ -114,6 +124,10 @@ public class ProjectSqlProvider {
         
         if (record.getProjectname() != null) {
             sql.SET("projectName = #{projectname,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getProjectsubtitle() != null) {
+            sql.SET("projectSubtitle = #{projectsubtitle,jdbcType=VARCHAR}");
         }
         
         if (record.getArticlelink() != null) {

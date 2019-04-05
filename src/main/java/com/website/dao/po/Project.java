@@ -5,6 +5,8 @@ public class Project {
 
     private String projectname;
 
+    private String projectsubtitle;
+
     private String articlelink;
 
     private String projectimgurl;
@@ -23,6 +25,14 @@ public class Project {
 
     public void setProjectname(String projectname) {
         this.projectname = projectname == null ? null : projectname.trim();
+    }
+
+    public String getProjectsubtitle() {
+        return projectsubtitle;
+    }
+
+    public void setProjectsubtitle(String projectsubtitle) {
+        this.projectsubtitle = projectsubtitle == null ? null : projectsubtitle.trim();
     }
 
     public String getArticlelink() {

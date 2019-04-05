@@ -39,7 +39,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table schema="website" tableName="config" domainObjectName="Config"
+        <table schema="website" tableName="project" domainObjectName="Project"
                enableCountByExample="true" enableDeleteByExample="true"
                enableSelectByExample="true" enableUpdateByExample="true">
             <property name="useActualColumnNames" value="false"/>

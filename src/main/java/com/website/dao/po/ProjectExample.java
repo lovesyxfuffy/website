@@ -234,6 +234,76 @@ public class ProjectExample {
             return (Criteria) this;
         }
 
+        public Criteria andProjectsubtitleIsNull() {
+            addCriterion("projectSubtitle is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectsubtitleIsNotNull() {
+            addCriterion("projectSubtitle is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectsubtitleEqualTo(String value) {
+            addCriterion("projectSubtitle =", value, "projectsubtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectsubtitleNotEqualTo(String value) {
+            addCriterion("projectSubtitle <>", value, "projectsubtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectsubtitleGreaterThan(String value) {
+            addCriterion("projectSubtitle >", value, "projectsubtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectsubtitleGreaterThanOrEqualTo(String value) {
+            addCriterion("projectSubtitle >=", value, "projectsubtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectsubtitleLessThan(String value) {
+            addCriterion("projectSubtitle <", value, "projectsubtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectsubtitleLessThanOrEqualTo(String value) {
+            addCriterion("projectSubtitle <=", value, "projectsubtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectsubtitleLike(String value) {
+            addCriterion("projectSubtitle like", value, "projectsubtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectsubtitleNotLike(String value) {
+            addCriterion("projectSubtitle not like", value, "projectsubtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectsubtitleIn(List<String> values) {
+            addCriterion("projectSubtitle in", values, "projectsubtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectsubtitleNotIn(List<String> values) {
+            addCriterion("projectSubtitle not in", values, "projectsubtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectsubtitleBetween(String value1, String value2) {
+            addCriterion("projectSubtitle between", value1, value2, "projectsubtitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andProjectsubtitleNotBetween(String value1, String value2) {
+            addCriterion("projectSubtitle not between", value1, value2, "projectsubtitle");
+            return (Criteria) this;
+        }
+
         public Criteria andArticlelinkIsNull() {
             addCriterion("articleLink is null");
             return (Criteria) this;
