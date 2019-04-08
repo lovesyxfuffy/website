@@ -1,5 +1,6 @@
 package com.website.application.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.website.application.FrontApplication;
 import com.website.dao.mappers.ArticleMapper;
 import com.website.dao.mappers.ConfigMapper;
@@ -7,6 +8,7 @@ import com.website.dao.po.Article;
 import com.website.dao.po.ArticleExample;
 import com.website.dao.po.Config;
 import com.website.dao.po.ConfigExample;
+import com.website.dto.PageDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,9 +39,11 @@ public class FrontApplicationImpl implements FrontApplication {
 
 
     @Override
-    public List<Article> getArticleList(String articleType){
+    public List<Article> getArticleList(PageDto pageDto) {
+        if (pageDto.getPageNum() != null)
+            PageHelper.startPage(pageDto.getPageNum(), pageDto.getPageSize());
         ArticleExample articleExample = new ArticleExample();
-        articleExample.createCriteria().andTypeEqualTo(articleType);
+        articleExample.createCriteria().andTypeEqualTo(pageDto.getModel());
         return articleMapper.selectByExample(articleExample);
     }
 

@@ -5,6 +5,6 @@ package com.website.enums;
  */
 public class ArticleTypeConstants {
 
-    public static final String NOTICE = "notice";
+    public static final String PROJECT = "project";
 
 }

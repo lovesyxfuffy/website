@@ -1,5 +1,6 @@
 package com.website.config;
 
+import com.github.pagehelper.PageHelper;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -14,6 +15,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 /**
  * Created by yujingyang on 2019/3/26.
@@ -80,5 +82,17 @@ public class SpringConfiguration {
     public PlatformTransactionManager platformTransactionManager(
             @Qualifier("dataSource") DataSource myDataSource) {
         return new DataSourceTransactionManager(myDataSource);
+    }
+
+    @Bean
+    public PageHelper pageHelper(){
+        PageHelper pageHelper = new PageHelper();
+        Properties properties = new Properties();
+        properties.setProperty("offsetAsPageNum","true");
+        properties.setProperty("rowBoundsWithCount","true");
+        properties.setProperty("reasonable","true");
+        properties.setProperty("dialect","mysql");    //配置mysql数据库的方言
+        pageHelper.setProperties(properties);
+        return pageHelper;
     }
 }
