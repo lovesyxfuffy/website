@@ -31,12 +31,12 @@ public interface ArticleMapper {
 
     @Insert({
         "insert into article (id, title, ",
-        "subtitle, type, ",
-        "creator, time, ",
+        "subtitle, imgUrl, ",
+        "type, creator, time, ",
         "content)",
         "values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, ",
-        "#{subtitle,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, ",
-        "#{creator,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, ",
+        "#{subtitle,jdbcType=VARCHAR}, #{imgurl,jdbcType=VARCHAR}, ",
+        "#{type,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, ",
         "#{content,jdbcType=LONGVARCHAR})"
     })
     int insert(Article record);
@@ -49,6 +49,7 @@ public interface ArticleMapper {
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="title", property="title", jdbcType=JdbcType.VARCHAR),
         @Result(column="subtitle", property="subtitle", jdbcType=JdbcType.VARCHAR),
+        @Result(column="imgUrl", property="imgurl", jdbcType=JdbcType.VARCHAR),
         @Result(column="type", property="type", jdbcType=JdbcType.VARCHAR),
         @Result(column="creator", property="creator", jdbcType=JdbcType.VARCHAR),
         @Result(column="time", property="time", jdbcType=JdbcType.TIMESTAMP),
@@ -61,6 +62,7 @@ public interface ArticleMapper {
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="title", property="title", jdbcType=JdbcType.VARCHAR),
         @Result(column="subtitle", property="subtitle", jdbcType=JdbcType.VARCHAR),
+        @Result(column="imgUrl", property="imgurl", jdbcType=JdbcType.VARCHAR),
         @Result(column="type", property="type", jdbcType=JdbcType.VARCHAR),
         @Result(column="creator", property="creator", jdbcType=JdbcType.VARCHAR),
         @Result(column="time", property="time", jdbcType=JdbcType.TIMESTAMP)
@@ -69,7 +71,7 @@ public interface ArticleMapper {
 
     @Select({
         "select",
-        "id, title, subtitle, type, creator, time, content",
+        "id, title, subtitle, imgUrl, type, creator, time, content",
         "from article",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -77,6 +79,7 @@ public interface ArticleMapper {
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="title", property="title", jdbcType=JdbcType.VARCHAR),
         @Result(column="subtitle", property="subtitle", jdbcType=JdbcType.VARCHAR),
+        @Result(column="imgUrl", property="imgurl", jdbcType=JdbcType.VARCHAR),
         @Result(column="type", property="type", jdbcType=JdbcType.VARCHAR),
         @Result(column="creator", property="creator", jdbcType=JdbcType.VARCHAR),
         @Result(column="time", property="time", jdbcType=JdbcType.TIMESTAMP),
@@ -100,6 +103,7 @@ public interface ArticleMapper {
         "update article",
         "set title = #{title,jdbcType=VARCHAR},",
           "subtitle = #{subtitle,jdbcType=VARCHAR},",
+          "imgUrl = #{imgurl,jdbcType=VARCHAR},",
           "type = #{type,jdbcType=VARCHAR},",
           "creator = #{creator,jdbcType=VARCHAR},",
           "time = #{time,jdbcType=TIMESTAMP},",
@@ -112,6 +116,7 @@ public interface ArticleMapper {
         "update article",
         "set title = #{title,jdbcType=VARCHAR},",
           "subtitle = #{subtitle,jdbcType=VARCHAR},",
+          "imgUrl = #{imgurl,jdbcType=VARCHAR},",
           "type = #{type,jdbcType=VARCHAR},",
           "creator = #{creator,jdbcType=VARCHAR},",
           "time = #{time,jdbcType=TIMESTAMP}",

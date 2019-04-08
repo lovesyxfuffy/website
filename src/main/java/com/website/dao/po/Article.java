@@ -9,6 +9,8 @@ public class Article {
 
     private String subtitle;
 
+    private String imgurl;
+
     private String type;
 
     private String creator;
@@ -39,6 +41,14 @@ public class Article {
 
     public void setSubtitle(String subtitle) {
         this.subtitle = subtitle == null ? null : subtitle.trim();
+    }
+
+    public String getImgurl() {
+        return imgurl;
+    }
+
+    public void setImgurl(String imgurl) {
+        this.imgurl = imgurl == null ? null : imgurl.trim();
     }
 
     public String getType() {

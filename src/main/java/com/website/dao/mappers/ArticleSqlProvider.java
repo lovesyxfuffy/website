@@ -40,6 +40,10 @@ public class ArticleSqlProvider {
             sql.VALUES("subtitle", "#{subtitle,jdbcType=VARCHAR}");
         }
         
+        if (record.getImgurl() != null) {
+            sql.VALUES("imgUrl", "#{imgurl,jdbcType=VARCHAR}");
+        }
+        
         if (record.getType() != null) {
             sql.VALUES("type", "#{type,jdbcType=VARCHAR}");
         }
@@ -68,6 +72,7 @@ public class ArticleSqlProvider {
         }
         sql.SELECT("title");
         sql.SELECT("subtitle");
+        sql.SELECT("imgUrl");
         sql.SELECT("type");
         sql.SELECT("creator");
         sql.SELECT("time");
@@ -91,6 +96,7 @@ public class ArticleSqlProvider {
         }
         sql.SELECT("title");
         sql.SELECT("subtitle");
+        sql.SELECT("imgUrl");
         sql.SELECT("type");
         sql.SELECT("creator");
         sql.SELECT("time");
@@ -123,6 +129,10 @@ public class ArticleSqlProvider {
             sql.SET("subtitle = #{record.subtitle,jdbcType=VARCHAR}");
         }
         
+        if (record.getImgurl() != null) {
+            sql.SET("imgUrl = #{record.imgurl,jdbcType=VARCHAR}");
+        }
+        
         if (record.getType() != null) {
             sql.SET("type = #{record.type,jdbcType=VARCHAR}");
         }
@@ -150,6 +160,7 @@ public class ArticleSqlProvider {
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
         sql.SET("title = #{record.title,jdbcType=VARCHAR}");
         sql.SET("subtitle = #{record.subtitle,jdbcType=VARCHAR}");
+        sql.SET("imgUrl = #{record.imgurl,jdbcType=VARCHAR}");
         sql.SET("type = #{record.type,jdbcType=VARCHAR}");
         sql.SET("creator = #{record.creator,jdbcType=VARCHAR}");
         sql.SET("time = #{record.time,jdbcType=TIMESTAMP}");
@@ -167,6 +178,7 @@ public class ArticleSqlProvider {
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
         sql.SET("title = #{record.title,jdbcType=VARCHAR}");
         sql.SET("subtitle = #{record.subtitle,jdbcType=VARCHAR}");
+        sql.SET("imgUrl = #{record.imgurl,jdbcType=VARCHAR}");
         sql.SET("type = #{record.type,jdbcType=VARCHAR}");
         sql.SET("creator = #{record.creator,jdbcType=VARCHAR}");
         sql.SET("time = #{record.time,jdbcType=TIMESTAMP}");
@@ -186,6 +198,10 @@ public class ArticleSqlProvider {
         
         if (record.getSubtitle() != null) {
             sql.SET("subtitle = #{subtitle,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getImgurl() != null) {
+            sql.SET("imgUrl = #{imgurl,jdbcType=VARCHAR}");
         }
         
         if (record.getType() != null) {
