@@ -32,20 +32,28 @@ public class ArticleSqlProvider {
             sql.VALUES("id", "#{id,jdbcType=INTEGER}");
         }
         
-        if (record.getArticlename() != null) {
-            sql.VALUES("articleName", "#{articlename,jdbcType=VARCHAR}");
+        if (record.getTitle() != null) {
+            sql.VALUES("title", "#{title,jdbcType=VARCHAR}");
         }
         
-        if (record.getArticletype() != null) {
-            sql.VALUES("articleType", "#{articletype,jdbcType=INTEGER}");
+        if (record.getSubtitle() != null) {
+            sql.VALUES("subtitle", "#{subtitle,jdbcType=VARCHAR}");
         }
         
-        if (record.getArticlecreater() != null) {
-            sql.VALUES("articleCreater", "#{articlecreater,jdbcType=VARCHAR}");
+        if (record.getType() != null) {
+            sql.VALUES("type", "#{type,jdbcType=VARCHAR}");
         }
         
-        if (record.getArticlecontent() != null) {
-            sql.VALUES("articleContent", "#{articlecontent,jdbcType=LONGVARCHAR}");
+        if (record.getCreator() != null) {
+            sql.VALUES("creator", "#{creator,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getTime() != null) {
+            sql.VALUES("time", "#{time,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getContent() != null) {
+            sql.VALUES("content", "#{content,jdbcType=LONGVARCHAR}");
         }
         
         return sql.toString();
@@ -58,10 +66,12 @@ public class ArticleSqlProvider {
         } else {
             sql.SELECT("id");
         }
-        sql.SELECT("articleName");
-        sql.SELECT("articleType");
-        sql.SELECT("articleCreater");
-        sql.SELECT("articleContent");
+        sql.SELECT("title");
+        sql.SELECT("subtitle");
+        sql.SELECT("type");
+        sql.SELECT("creator");
+        sql.SELECT("time");
+        sql.SELECT("content");
         sql.FROM("article");
         applyWhere(sql, example, false);
         
@@ -79,9 +89,11 @@ public class ArticleSqlProvider {
         } else {
             sql.SELECT("id");
         }
-        sql.SELECT("articleName");
-        sql.SELECT("articleType");
-        sql.SELECT("articleCreater");
+        sql.SELECT("title");
+        sql.SELECT("subtitle");
+        sql.SELECT("type");
+        sql.SELECT("creator");
+        sql.SELECT("time");
         sql.FROM("article");
         applyWhere(sql, example, false);
         
@@ -103,20 +115,28 @@ public class ArticleSqlProvider {
             sql.SET("id = #{record.id,jdbcType=INTEGER}");
         }
         
-        if (record.getArticlename() != null) {
-            sql.SET("articleName = #{record.articlename,jdbcType=VARCHAR}");
+        if (record.getTitle() != null) {
+            sql.SET("title = #{record.title,jdbcType=VARCHAR}");
         }
         
-        if (record.getArticletype() != null) {
-            sql.SET("articleType = #{record.articletype,jdbcType=INTEGER}");
+        if (record.getSubtitle() != null) {
+            sql.SET("subtitle = #{record.subtitle,jdbcType=VARCHAR}");
         }
         
-        if (record.getArticlecreater() != null) {
-            sql.SET("articleCreater = #{record.articlecreater,jdbcType=VARCHAR}");
+        if (record.getType() != null) {
+            sql.SET("type = #{record.type,jdbcType=VARCHAR}");
         }
         
-        if (record.getArticlecontent() != null) {
-            sql.SET("articleContent = #{record.articlecontent,jdbcType=LONGVARCHAR}");
+        if (record.getCreator() != null) {
+            sql.SET("creator = #{record.creator,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getTime() != null) {
+            sql.SET("time = #{record.time,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getContent() != null) {
+            sql.SET("content = #{record.content,jdbcType=LONGVARCHAR}");
         }
         
         applyWhere(sql, example, true);
@@ -128,10 +148,12 @@ public class ArticleSqlProvider {
         sql.UPDATE("article");
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("articleName = #{record.articlename,jdbcType=VARCHAR}");
-        sql.SET("articleType = #{record.articletype,jdbcType=INTEGER}");
-        sql.SET("articleCreater = #{record.articlecreater,jdbcType=VARCHAR}");
-        sql.SET("articleContent = #{record.articlecontent,jdbcType=LONGVARCHAR}");
+        sql.SET("title = #{record.title,jdbcType=VARCHAR}");
+        sql.SET("subtitle = #{record.subtitle,jdbcType=VARCHAR}");
+        sql.SET("type = #{record.type,jdbcType=VARCHAR}");
+        sql.SET("creator = #{record.creator,jdbcType=VARCHAR}");
+        sql.SET("time = #{record.time,jdbcType=TIMESTAMP}");
+        sql.SET("content = #{record.content,jdbcType=LONGVARCHAR}");
         
         ArticleExample example = (ArticleExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -143,9 +165,11 @@ public class ArticleSqlProvider {
         sql.UPDATE("article");
         
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
-        sql.SET("articleName = #{record.articlename,jdbcType=VARCHAR}");
-        sql.SET("articleType = #{record.articletype,jdbcType=INTEGER}");
-        sql.SET("articleCreater = #{record.articlecreater,jdbcType=VARCHAR}");
+        sql.SET("title = #{record.title,jdbcType=VARCHAR}");
+        sql.SET("subtitle = #{record.subtitle,jdbcType=VARCHAR}");
+        sql.SET("type = #{record.type,jdbcType=VARCHAR}");
+        sql.SET("creator = #{record.creator,jdbcType=VARCHAR}");
+        sql.SET("time = #{record.time,jdbcType=TIMESTAMP}");
         
         ArticleExample example = (ArticleExample) parameter.get("example");
         applyWhere(sql, example, true);
@@ -156,20 +180,28 @@ public class ArticleSqlProvider {
         SQL sql = new SQL();
         sql.UPDATE("article");
         
-        if (record.getArticlename() != null) {
-            sql.SET("articleName = #{articlename,jdbcType=VARCHAR}");
+        if (record.getTitle() != null) {
+            sql.SET("title = #{title,jdbcType=VARCHAR}");
         }
         
-        if (record.getArticletype() != null) {
-            sql.SET("articleType = #{articletype,jdbcType=INTEGER}");
+        if (record.getSubtitle() != null) {
+            sql.SET("subtitle = #{subtitle,jdbcType=VARCHAR}");
         }
         
-        if (record.getArticlecreater() != null) {
-            sql.SET("articleCreater = #{articlecreater,jdbcType=VARCHAR}");
+        if (record.getType() != null) {
+            sql.SET("type = #{type,jdbcType=VARCHAR}");
         }
         
-        if (record.getArticlecontent() != null) {
-            sql.SET("articleContent = #{articlecontent,jdbcType=LONGVARCHAR}");
+        if (record.getCreator() != null) {
+            sql.SET("creator = #{creator,jdbcType=VARCHAR}");
+        }
+        
+        if (record.getTime() != null) {
+            sql.SET("time = #{time,jdbcType=TIMESTAMP}");
+        }
+        
+        if (record.getContent() != null) {
+            sql.SET("content = #{content,jdbcType=LONGVARCHAR}");
         }
         
         sql.WHERE("id = #{id,jdbcType=INTEGER}");

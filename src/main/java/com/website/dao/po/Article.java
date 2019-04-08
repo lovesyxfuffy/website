@@ -1,15 +1,21 @@
 package com.website.dao.po;
 
+import java.util.Date;
+
 public class Article {
     private Integer id;
 
-    private String articlename;
+    private String title;
 
-    private Integer articletype;
+    private String subtitle;
 
-    private String articlecreater;
+    private String type;
 
-    private String articlecontent;
+    private String creator;
+
+    private Date time;
+
+    private String content;
 
     public Integer getId() {
         return id;
@@ -19,35 +25,51 @@ public class Article {
         this.id = id;
     }
 
-    public String getArticlename() {
-        return articlename;
+    public String getTitle() {
+        return title;
     }
 
-    public void setArticlename(String articlename) {
-        this.articlename = articlename == null ? null : articlename.trim();
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
     }
 
-    public Integer getArticletype() {
-        return articletype;
+    public String getSubtitle() {
+        return subtitle;
     }
 
-    public void setArticletype(Integer articletype) {
-        this.articletype = articletype;
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle == null ? null : subtitle.trim();
     }
 
-    public String getArticlecreater() {
-        return articlecreater;
+    public String getType() {
+        return type;
     }
 
-    public void setArticlecreater(String articlecreater) {
-        this.articlecreater = articlecreater == null ? null : articlecreater.trim();
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
     }
 
-    public String getArticlecontent() {
-        return articlecontent;
+    public String getCreator() {
+        return creator;
     }
 
-    public void setArticlecontent(String articlecontent) {
-        this.articlecontent = articlecontent == null ? null : articlecontent.trim();
+    public void setCreator(String creator) {
+        this.creator = creator == null ? null : creator.trim();
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
     }
 }

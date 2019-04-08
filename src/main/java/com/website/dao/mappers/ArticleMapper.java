@@ -30,12 +30,14 @@ public interface ArticleMapper {
     int deleteByPrimaryKey(Integer id);
 
     @Insert({
-        "insert into article (id, articleName, ",
-        "articleType, articleCreater, ",
-        "articleContent)",
-        "values (#{id,jdbcType=INTEGER}, #{articlename,jdbcType=VARCHAR}, ",
-        "#{articletype,jdbcType=INTEGER}, #{articlecreater,jdbcType=VARCHAR}, ",
-        "#{articlecontent,jdbcType=LONGVARCHAR})"
+        "insert into article (id, title, ",
+        "subtitle, type, ",
+        "creator, time, ",
+        "content)",
+        "values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, ",
+        "#{subtitle,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, ",
+        "#{creator,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, ",
+        "#{content,jdbcType=LONGVARCHAR})"
     })
     int insert(Article record);
 
@@ -45,34 +47,40 @@ public interface ArticleMapper {
     @SelectProvider(type=ArticleSqlProvider.class, method="selectByExampleWithBLOBs")
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="articleName", property="articlename", jdbcType=JdbcType.VARCHAR),
-        @Result(column="articleType", property="articletype", jdbcType=JdbcType.INTEGER),
-        @Result(column="articleCreater", property="articlecreater", jdbcType=JdbcType.VARCHAR),
-        @Result(column="articleContent", property="articlecontent", jdbcType=JdbcType.LONGVARCHAR)
+        @Result(column="title", property="title", jdbcType=JdbcType.VARCHAR),
+        @Result(column="subtitle", property="subtitle", jdbcType=JdbcType.VARCHAR),
+        @Result(column="type", property="type", jdbcType=JdbcType.VARCHAR),
+        @Result(column="creator", property="creator", jdbcType=JdbcType.VARCHAR),
+        @Result(column="time", property="time", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="content", property="content", jdbcType=JdbcType.LONGVARCHAR)
     })
     List<Article> selectByExampleWithBLOBs(ArticleExample example);
 
     @SelectProvider(type=ArticleSqlProvider.class, method="selectByExample")
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="articleName", property="articlename", jdbcType=JdbcType.VARCHAR),
-        @Result(column="articleType", property="articletype", jdbcType=JdbcType.INTEGER),
-        @Result(column="articleCreater", property="articlecreater", jdbcType=JdbcType.VARCHAR)
+        @Result(column="title", property="title", jdbcType=JdbcType.VARCHAR),
+        @Result(column="subtitle", property="subtitle", jdbcType=JdbcType.VARCHAR),
+        @Result(column="type", property="type", jdbcType=JdbcType.VARCHAR),
+        @Result(column="creator", property="creator", jdbcType=JdbcType.VARCHAR),
+        @Result(column="time", property="time", jdbcType=JdbcType.TIMESTAMP)
     })
     List<Article> selectByExample(ArticleExample example);
 
     @Select({
         "select",
-        "id, articleName, articleType, articleCreater, articleContent",
+        "id, title, subtitle, type, creator, time, content",
         "from article",
         "where id = #{id,jdbcType=INTEGER}"
     })
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
-        @Result(column="articleName", property="articlename", jdbcType=JdbcType.VARCHAR),
-        @Result(column="articleType", property="articletype", jdbcType=JdbcType.INTEGER),
-        @Result(column="articleCreater", property="articlecreater", jdbcType=JdbcType.VARCHAR),
-        @Result(column="articleContent", property="articlecontent", jdbcType=JdbcType.LONGVARCHAR)
+        @Result(column="title", property="title", jdbcType=JdbcType.VARCHAR),
+        @Result(column="subtitle", property="subtitle", jdbcType=JdbcType.VARCHAR),
+        @Result(column="type", property="type", jdbcType=JdbcType.VARCHAR),
+        @Result(column="creator", property="creator", jdbcType=JdbcType.VARCHAR),
+        @Result(column="time", property="time", jdbcType=JdbcType.TIMESTAMP),
+        @Result(column="content", property="content", jdbcType=JdbcType.LONGVARCHAR)
     })
     Article selectByPrimaryKey(Integer id);
 
@@ -90,19 +98,23 @@ public interface ArticleMapper {
 
     @Update({
         "update article",
-        "set articleName = #{articlename,jdbcType=VARCHAR},",
-          "articleType = #{articletype,jdbcType=INTEGER},",
-          "articleCreater = #{articlecreater,jdbcType=VARCHAR},",
-          "articleContent = #{articlecontent,jdbcType=LONGVARCHAR}",
+        "set title = #{title,jdbcType=VARCHAR},",
+          "subtitle = #{subtitle,jdbcType=VARCHAR},",
+          "type = #{type,jdbcType=VARCHAR},",
+          "creator = #{creator,jdbcType=VARCHAR},",
+          "time = #{time,jdbcType=TIMESTAMP},",
+          "content = #{content,jdbcType=LONGVARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKeyWithBLOBs(Article record);
 
     @Update({
         "update article",
-        "set articleName = #{articlename,jdbcType=VARCHAR},",
-          "articleType = #{articletype,jdbcType=INTEGER},",
-          "articleCreater = #{articlecreater,jdbcType=VARCHAR}",
+        "set title = #{title,jdbcType=VARCHAR},",
+          "subtitle = #{subtitle,jdbcType=VARCHAR},",
+          "type = #{type,jdbcType=VARCHAR},",
+          "creator = #{creator,jdbcType=VARCHAR},",
+          "time = #{time,jdbcType=TIMESTAMP}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Article record);
