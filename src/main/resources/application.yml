@@ -6,3 +6,5 @@ jdbc:
   url: jdbc:mysql://catstudiotest.mysql.rds.aliyuncs.com:3306/nekostory_web?useUnicode=true&characterEncoding=UTF-8
   username: nekostoryweb
   password: NekoWeb123
+local:
+  savePath: /var/www/static/static/

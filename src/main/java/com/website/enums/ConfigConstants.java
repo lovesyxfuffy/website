@@ -15,4 +15,7 @@ public class ConfigConstants {
 
     public static final String FAX = "fax";
 
+    public static final String HEAD_IMG = "headImgs";
+
+
 }
