@@ -2,6 +2,7 @@ package com.website.controller;
 
 import com.website.application.ManageApplication;
 import com.website.dao.po.Article;
+import com.website.dto.PageDto;
 import com.website.dto.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -60,8 +61,14 @@ public class ManageController {
         return Result.builder().data("").successTrue().build();
     }
 
-    @RequestMapping(value = "/article/list",method = RequestMethod.POST)
-    public Result getArticleList(){
+    @RequestMapping(value = "/article/list", method = RequestMethod.POST)
+    public Result getArticleList(@RequestBody PageDto pageDto) {
+        return Result.builder().data(manageApplication.getArticleList(pageDto)).successTrue().build();
+    }
+
+    @RequestMapping(value = "/article/delete/{articleId}", method = RequestMethod.POST)
+    public Result deleteArticle(@PathVariable("articleId") Integer articleId) {
+        manageApplication.deleteArticle(articleId);
         return Result.builder().data("").successTrue().build();
     }
 

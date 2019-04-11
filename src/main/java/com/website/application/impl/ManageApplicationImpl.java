@@ -1,14 +1,16 @@
 package com.website.application.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.website.application.ManageApplication;
 import com.website.controller.exceptions.BizException;
 import com.website.dao.mappers.AccountMapper;
 import com.website.dao.mappers.ArticleMapper;
 import com.website.dao.mappers.ConfigMapper;
-import com.website.dao.po.Account;
-import com.website.dao.po.AccountExample;
-import com.website.dao.po.Article;
-import com.website.dao.po.Config;
+import com.website.dao.po.*;
+import com.website.dto.PageDto;
+import com.website.dto.PageResultDto;
+import com.website.enums.ArticleTypeConstants;
 import com.website.enums.ConfigConstants;
 import com.website.enums.ConfigModelConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.stream.Collectors;
 
 /**
  * Created by yujingyang on 2019/4/9.
@@ -104,6 +107,28 @@ public class ManageApplicationImpl implements ManageApplication {
         } else {
             articleMapper.insertSelective(article);
         }
+    }
+
+
+    @Override
+    public PageResultDto getArticleList(PageDto pageDto) {
+        PageHelper.startPage(pageDto.getPageNum(), pageDto.getPageSize());
+        List<Article> result = articleMapper.selectByExample(new ArticleExample());
+        result = result.stream().map(row -> {
+            row.setType(ArticleTypeConstants.ARTICLE_TYPE_MAPPING.get(row.getType()));
+            return row;
+        }).collect(Collectors.toList());
+        PageInfo<Article> pageInfo = new PageInfo<>(result);
+        pageDto.setTotal(pageInfo.getTotal());
+        PageResultDto pageResultDto = new PageResultDto();
+        pageResultDto.setPage(pageDto);
+        pageResultDto.setBody(result);
+        return pageResultDto;
+    }
+
+    @Override
+    public void deleteArticle(Integer id){
+        articleMapper.deleteByPrimaryKey(id);
     }
 
 }

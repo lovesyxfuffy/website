@@ -9,7 +9,7 @@ public class Article {
 
     private String subtitle;
 
-    private String imgurl;
+    private String imgUrl;
 
     private String type;
 
@@ -44,11 +44,11 @@ public class Article {
     }
 
     public String getImgurl() {
-        return imgurl;
+        return imgUrl;
     }
 
-    public void setImgurl(String imgurl) {
-        this.imgurl = imgurl == null ? null : imgurl.trim();
+    public void setImgurl(String imgUrl) {
+        this.imgUrl = imgUrl == null ? null : imgUrl.trim();
     }
 
     public String getType() {

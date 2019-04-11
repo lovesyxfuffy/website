@@ -1,6 +1,7 @@
 package com.website.application.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.website.application.FrontApplication;
 import com.website.controller.exceptions.BizException;
 import com.website.dao.mappers.ArticleMapper;
@@ -49,9 +50,11 @@ public class FrontApplicationImpl implements FrontApplication {
         ArticleExample articleExample = new ArticleExample();
         articleExample.createCriteria().andTypeEqualTo(pageDto.getModel());
         List<Article> body = articleMapper.selectByExample(articleExample);
+        PageInfo<Article> pageInfo = new PageInfo<>(body);
         PageResultDto pageResultDto = new PageResultDto();
         pageResultDto.setBody(body);
         pageResultDto.setPage(pageDto);
+        pageDto.setTotal(pageInfo.getTotal());
         return pageResultDto;
     }
 

@@ -1,6 +1,8 @@
 package com.website.application;
 
 import com.website.dao.po.Article;
+import com.website.dto.PageDto;
+import com.website.dto.PageResultDto;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.util.List;
@@ -19,4 +21,8 @@ public interface ManageApplication {
     void setImgs(List<String> headImgLinks);
 
     void updateArticle(Article article);
+
+    PageResultDto getArticleList(PageDto pageDto);
+
+    void deleteArticle(Integer id);
 }

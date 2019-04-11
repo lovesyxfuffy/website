@@ -10,4 +10,5 @@ public class PageDto {
     Integer pageNum;
     String model;
     Integer pageSize;
+    Long total;
 }

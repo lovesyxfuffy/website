@@ -3,19 +3,11 @@ package com.website.dao.mappers;
 import com.website.dao.po.Article;
 import com.website.dao.po.ArticleExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.DeleteProvider;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.InsertProvider;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectProvider;
-import org.apache.ibatis.annotations.Update;
-import org.apache.ibatis.annotations.UpdateProvider;
+
+import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
+@Mapper
 public interface ArticleMapper {
     @SelectProvider(type=ArticleSqlProvider.class, method="countByExample")
     long countByExample(ArticleExample example);
@@ -35,7 +27,7 @@ public interface ArticleMapper {
         "type, creator, time, ",
         "content)",
         "values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, ",
-        "#{subtitle,jdbcType=VARCHAR}, #{imgurl,jdbcType=VARCHAR}, ",
+        "#{subtitle,jdbcType=VARCHAR}, #{imgUrl,jdbcType=VARCHAR}, ",
         "#{type,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, ",
         "#{content,jdbcType=LONGVARCHAR})"
     })
@@ -49,7 +41,7 @@ public interface ArticleMapper {
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="title", property="title", jdbcType=JdbcType.VARCHAR),
         @Result(column="subtitle", property="subtitle", jdbcType=JdbcType.VARCHAR),
-        @Result(column="imgUrl", property="imgurl", jdbcType=JdbcType.VARCHAR),
+        @Result(column="imgUrl", property="imgUrl", jdbcType=JdbcType.VARCHAR),
         @Result(column="type", property="type", jdbcType=JdbcType.VARCHAR),
         @Result(column="creator", property="creator", jdbcType=JdbcType.VARCHAR),
         @Result(column="time", property="time", jdbcType=JdbcType.TIMESTAMP),
@@ -62,7 +54,7 @@ public interface ArticleMapper {
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="title", property="title", jdbcType=JdbcType.VARCHAR),
         @Result(column="subtitle", property="subtitle", jdbcType=JdbcType.VARCHAR),
-        @Result(column="imgUrl", property="imgurl", jdbcType=JdbcType.VARCHAR),
+        @Result(column="imgUrl", property="imgUrl", jdbcType=JdbcType.VARCHAR),
         @Result(column="type", property="type", jdbcType=JdbcType.VARCHAR),
         @Result(column="creator", property="creator", jdbcType=JdbcType.VARCHAR),
         @Result(column="time", property="time", jdbcType=JdbcType.TIMESTAMP)
@@ -79,7 +71,7 @@ public interface ArticleMapper {
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="title", property="title", jdbcType=JdbcType.VARCHAR),
         @Result(column="subtitle", property="subtitle", jdbcType=JdbcType.VARCHAR),
-        @Result(column="imgUrl", property="imgurl", jdbcType=JdbcType.VARCHAR),
+        @Result(column="imgUrl", property="imgUrl", jdbcType=JdbcType.VARCHAR),
         @Result(column="type", property="type", jdbcType=JdbcType.VARCHAR),
         @Result(column="creator", property="creator", jdbcType=JdbcType.VARCHAR),
         @Result(column="time", property="time", jdbcType=JdbcType.TIMESTAMP),
@@ -103,7 +95,7 @@ public interface ArticleMapper {
         "update article",
         "set title = #{title,jdbcType=VARCHAR},",
           "subtitle = #{subtitle,jdbcType=VARCHAR},",
-          "imgUrl = #{imgurl,jdbcType=VARCHAR},",
+          "imgUrl = #{imgUrl,jdbcType=VARCHAR},",
           "type = #{type,jdbcType=VARCHAR},",
           "creator = #{creator,jdbcType=VARCHAR},",
           "time = #{time,jdbcType=TIMESTAMP},",
@@ -116,7 +108,7 @@ public interface ArticleMapper {
         "update article",
         "set title = #{title,jdbcType=VARCHAR},",
           "subtitle = #{subtitle,jdbcType=VARCHAR},",
-          "imgUrl = #{imgurl,jdbcType=VARCHAR},",
+          "imgUrl = #{imgUrl,jdbcType=VARCHAR},",
           "type = #{type,jdbcType=VARCHAR},",
           "creator = #{creator,jdbcType=VARCHAR},",
           "time = #{time,jdbcType=TIMESTAMP}",

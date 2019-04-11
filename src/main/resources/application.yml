@@ -3,8 +3,8 @@ mybatis:
   mapperLocations: classpath:com/website/dao/mappers/*.xml
 jdbc:
   driver: com.mysql.jdbc.Driver
-  url: jdbc:mysql://catstudiotest.mysql.rds.aliyuncs.com:3306/nekostory_web?useUnicode=true&characterEncoding=UTF-8
-  username: nekostoryweb
-  password: NekoWeb123
+  url: jdbc:mysql://localhost:3306/website?useUnicode=true&characterEncoding=UTF-8
+  username: root
+  password: 123
 local:
   savePath: /var/www/static/static/

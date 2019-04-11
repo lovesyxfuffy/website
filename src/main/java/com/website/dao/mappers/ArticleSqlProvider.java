@@ -41,7 +41,7 @@ public class ArticleSqlProvider {
         }
         
         if (record.getImgurl() != null) {
-            sql.VALUES("imgUrl", "#{imgurl,jdbcType=VARCHAR}");
+            sql.VALUES("imgUrl", "#{imgUrl,jdbcType=VARCHAR}");
         }
         
         if (record.getType() != null) {
@@ -130,7 +130,7 @@ public class ArticleSqlProvider {
         }
         
         if (record.getImgurl() != null) {
-            sql.SET("imgUrl = #{record.imgurl,jdbcType=VARCHAR}");
+            sql.SET("imgUrl = #{record.imgUrl,jdbcType=VARCHAR}");
         }
         
         if (record.getType() != null) {
@@ -160,7 +160,7 @@ public class ArticleSqlProvider {
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
         sql.SET("title = #{record.title,jdbcType=VARCHAR}");
         sql.SET("subtitle = #{record.subtitle,jdbcType=VARCHAR}");
-        sql.SET("imgUrl = #{record.imgurl,jdbcType=VARCHAR}");
+        sql.SET("imgUrl = #{record.imgUrl,jdbcType=VARCHAR}");
         sql.SET("type = #{record.type,jdbcType=VARCHAR}");
         sql.SET("creator = #{record.creator,jdbcType=VARCHAR}");
         sql.SET("time = #{record.time,jdbcType=TIMESTAMP}");
@@ -178,7 +178,7 @@ public class ArticleSqlProvider {
         sql.SET("id = #{record.id,jdbcType=INTEGER}");
         sql.SET("title = #{record.title,jdbcType=VARCHAR}");
         sql.SET("subtitle = #{record.subtitle,jdbcType=VARCHAR}");
-        sql.SET("imgUrl = #{record.imgurl,jdbcType=VARCHAR}");
+        sql.SET("imgUrl = #{record.imgUrl,jdbcType=VARCHAR}");
         sql.SET("type = #{record.type,jdbcType=VARCHAR}");
         sql.SET("creator = #{record.creator,jdbcType=VARCHAR}");
         sql.SET("time = #{record.time,jdbcType=TIMESTAMP}");
@@ -201,7 +201,7 @@ public class ArticleSqlProvider {
         }
         
         if (record.getImgurl() != null) {
-            sql.SET("imgUrl = #{imgurl,jdbcType=VARCHAR}");
+            sql.SET("imgUrl = #{imgUrl,jdbcType=VARCHAR}");
         }
         
         if (record.getType() != null) {
