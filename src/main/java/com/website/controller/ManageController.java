@@ -27,7 +27,7 @@ public class ManageController {
     public Result login(@RequestBody Map<String, String> loginParam, HttpServletRequest request) {
         if (manageApplication.checkUser(loginParam.get("userName"), loginParam.get("password"))) {
             HttpSession session = request.getSession();
-            session.setAttribute("userName", loginParam.get("userName"));
+            session.setAttribute("loginFlag", true);
             return Result.builder().data("").successTrue().build();
         }
         return Result.builder().data(Result.FORBIDDEN, "账号或密码错误").failedFalse("账号或密码错误").build();
@@ -36,7 +36,7 @@ public class ManageController {
 
     private final static String staticFilePath = "/static/";
 
-    @RequestMapping(value = "/article/img/upload", method = RequestMethod.POST)
+    @RequestMapping(value = {"/article/img/upload", "/img/upload"}, method = RequestMethod.POST)
     @ResponseBody
     public String fileUpload(@RequestParam("file") CommonsMultipartFile file) {
         String fileName = manageApplication.saveFile(file);

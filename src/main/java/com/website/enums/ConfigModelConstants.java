@@ -7,7 +7,6 @@ public class ConfigModelConstants {
 
     public static final int MAIN_PAGE = 1;
 
-    public static final int HEAD_IMG = 2;
 
 
 }

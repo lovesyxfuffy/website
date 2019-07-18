@@ -3,16 +3,20 @@ package com.website.config;
 import com.github.pagehelper.PageHelper;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.assertj.core.util.Lists;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -54,6 +58,8 @@ public class SpringConfiguration {
         basicDataSource.setMaxWait(60000);
         basicDataSource.setMaxIdle(20);
         basicDataSource.setMinIdle(1);
+        basicDataSource.setTestOnBorrow(true);
+        basicDataSource.setValidationQuery("SELECT 1");
         return basicDataSource;
     }
 
@@ -95,4 +101,14 @@ public class SpringConfiguration {
         pageHelper.setProperties(properties);
         return pageHelper;
     }
+
+    @Bean
+    public CommonsMultipartResolver commonsMultipartResolver(){
+        CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+        commonsMultipartResolver.setDefaultEncoding("utf-8");
+        commonsMultipartResolver.setMaxUploadSize(10485760000L);
+        commonsMultipartResolver.setMaxInMemorySize(4096);
+        return commonsMultipartResolver;
+    }
+
 }

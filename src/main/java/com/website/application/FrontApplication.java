@@ -11,7 +11,7 @@ import java.util.Map;
  * Created by yujingyang on 2019/4/8.
  */
 public interface FrontApplication {
-    Map<String, String> getMainPageConfig();
+    Map<String, List<String>> getMainPageConfig();
 
     PageResultDto getArticleList(PageDto pageDto);
 

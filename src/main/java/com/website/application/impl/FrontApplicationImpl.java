@@ -12,11 +12,14 @@ import com.website.dao.po.Config;
 import com.website.dao.po.ConfigExample;
 import com.website.dto.PageDto;
 import com.website.dto.PageResultDto;
+import com.website.enums.ConfigConstants;
 import com.website.enums.ConfigModelConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -35,11 +38,16 @@ public class FrontApplicationImpl implements FrontApplication {
 
 
     @Override
-    public Map<String, String> getMainPageConfig() {
+    public Map<String, List<String>> getMainPageConfig() {
         ConfigExample configExample = new ConfigExample();
         configExample.createCriteria().andConfigmodelEqualTo(ConfigModelConstants.MAIN_PAGE);
         List<Config> configList = configMapper.selectByExample(configExample);
-        return configList.stream().collect(Collectors.toMap(Config::getConfigname, Config::getConfigcontent));
+        Map<String, List<String>> configMap = new HashMap<>();
+        for (Config config : configList) {
+            List<String> tmp = configMap.computeIfAbsent(config.getConfigname(), k -> new ArrayList<>());
+            tmp.add(config.getConfigcontent());
+        }
+        return configMap;
     }
 
 
@@ -49,6 +57,7 @@ public class FrontApplicationImpl implements FrontApplication {
             PageHelper.startPage(pageDto.getPageNum(), pageDto.getPageSize());
         ArticleExample articleExample = new ArticleExample();
         articleExample.createCriteria().andTypeEqualTo(pageDto.getModel());
+        articleExample.setOrderByClause(" time desc ");
         List<Article> body = articleMapper.selectByExample(articleExample);
         PageInfo<Article> pageInfo = new PageInfo<>(body);
         PageResultDto pageResultDto = new PageResultDto();
@@ -67,16 +76,17 @@ public class FrontApplicationImpl implements FrontApplication {
     public Article getArticleByType(String articleType) {
         ArticleExample articleExample = new ArticleExample();
         articleExample.createCriteria().andTypeEqualTo(articleType);
+        articleExample.setOrderByClause(" time desc ");
         List<Article> result = articleMapper.selectByExampleWithBLOBs(articleExample);
         if (CollectionUtils.isEmpty(result))
-            throw new BizException("查询文章结果错误-类型:" + articleType);
+            return null;
         return result.get(0);
     }
 
     @Override
     public List<String> getHeadImgList() {
         ConfigExample configExample = new ConfigExample();
-        configExample.createCriteria().andConfigmodelEqualTo(ConfigModelConstants.HEAD_IMG);
+        configExample.createCriteria().andConfigmodelEqualTo(ConfigModelConstants.MAIN_PAGE).andConfignameEqualTo(ConfigConstants.HEAD_IMG);
         List<Config> result = configMapper.selectByExample(configExample);
         return result.stream().map(Config::getConfigcontent).collect(Collectors.toList());
     }

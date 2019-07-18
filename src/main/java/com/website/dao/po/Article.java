@@ -1,5 +1,8 @@
 package com.website.dao.po;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Article {
@@ -15,6 +18,8 @@ public class Article {
 
     private String creator;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date time;
 
     private String content;
@@ -43,12 +48,12 @@ public class Article {
         this.subtitle = subtitle == null ? null : subtitle.trim();
     }
 
-    public String getImgurl() {
+    public String getImgUrl() {
         return imgUrl;
     }
 
-    public void setImgurl(String imgUrl) {
-        this.imgUrl = imgUrl == null ? null : imgUrl.trim();
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public String getType() {

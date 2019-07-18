@@ -3,7 +3,7 @@ mybatis:
   mapperLocations: classpath:com/website/dao/mappers/*.xml
 jdbc:
   driver: com.mysql.jdbc.Driver
-  url: jdbc:mysql://localhost:3306/website?useUnicode=true&characterEncoding=UTF-8
+  url: jdbc:mysql://localhost:3306/website?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
   username: root
   password: 123
 local:

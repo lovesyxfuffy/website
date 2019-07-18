@@ -17,13 +17,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -55,10 +54,12 @@ public class ManageApplicationImpl implements ManageApplication {
     @Override
     public String saveFile(CommonsMultipartFile file) {
         Properties properties = new Properties();
-        if (file == null || file.getSize() == 0)
+        if (file == null || file.getSize() == 0) {
             return null;
+        }
+        String saveName = UUID.randomUUID() + file.getOriginalFilename();
+        String saveFile = savePath + saveName;
         try {
-            String saveFile = savePath + file.getOriginalFilename();
             if ("".equals(file.getOriginalFilename()))
                 return null;
             File newFile = new File(saveFile);
@@ -74,12 +75,16 @@ public class ManageApplicationImpl implements ManageApplication {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return file.getOriginalFilename();
+        return saveName;
     }
 
     @Override
     public void setConfig(Map<String, String> configs) {
         configs.forEach((key, value) -> {
+            ConfigExample configExample = new ConfigExample();
+            configExample.createCriteria().andConfignameEqualTo(key).andConfigmodelEqualTo(ConfigModelConstants.MAIN_PAGE);
+            configMapper.deleteByExample(configExample);
+
             Config config = new Config();
             config.setConfigname(key);
             config.setConfigcontent(value);
@@ -90,6 +95,10 @@ public class ManageApplicationImpl implements ManageApplication {
 
     @Override
     public void setImgs(List<String> headImgLinks) {
+        ConfigExample configExample = new ConfigExample();
+        configExample.createCriteria().andConfigmodelEqualTo(ConfigModelConstants.MAIN_PAGE)
+                .andConfignameEqualTo(ConfigConstants.HEAD_IMG);
+        configMapper.deleteByExample(configExample);
         for (String headImgLink : headImgLinks) {
             Config config = new Config();
             config.setConfigname(ConfigConstants.HEAD_IMG);
@@ -102,6 +111,9 @@ public class ManageApplicationImpl implements ManageApplication {
 
     @Override
     public void updateArticle(Article article) {
+        if(article.getTime() == null){
+            article.setTime(new Date());
+        }
         if (article.getId() != null) {
             articleMapper.updateByPrimaryKeySelective(article);
         } else {
@@ -113,21 +125,24 @@ public class ManageApplicationImpl implements ManageApplication {
     @Override
     public PageResultDto getArticleList(PageDto pageDto) {
         PageHelper.startPage(pageDto.getPageNum(), pageDto.getPageSize());
-        List<Article> result = articleMapper.selectByExample(new ArticleExample());
-        result = result.stream().map(row -> {
-            row.setType(ArticleTypeConstants.ARTICLE_TYPE_MAPPING.get(row.getType()));
-            return row;
-        }).collect(Collectors.toList());
+        ArticleExample articleExample = new ArticleExample();
+        if (!StringUtils.isEmpty(pageDto.getModel()))
+            articleExample.createCriteria().andTypeEqualTo(pageDto.getModel());
+        List<Article> result = articleMapper.selectByExample(articleExample);
         PageInfo<Article> pageInfo = new PageInfo<>(result);
         pageDto.setTotal(pageInfo.getTotal());
         PageResultDto pageResultDto = new PageResultDto();
         pageResultDto.setPage(pageDto);
+        result = result.stream().map(row -> {
+            row.setType(ArticleTypeConstants.ARTICLE_TYPE_MAPPING.get(row.getType()));
+            return row;
+        }).collect(Collectors.toList());
         pageResultDto.setBody(result);
         return pageResultDto;
     }
 
     @Override
-    public void deleteArticle(Integer id){
+    public void deleteArticle(Integer id) {
         articleMapper.deleteByPrimaryKey(id);
     }
 

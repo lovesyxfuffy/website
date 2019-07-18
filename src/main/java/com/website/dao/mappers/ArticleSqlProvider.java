@@ -40,7 +40,7 @@ public class ArticleSqlProvider {
             sql.VALUES("subtitle", "#{subtitle,jdbcType=VARCHAR}");
         }
         
-        if (record.getImgurl() != null) {
+        if (record.getImgUrl() != null) {
             sql.VALUES("imgUrl", "#{imgUrl,jdbcType=VARCHAR}");
         }
         
@@ -129,7 +129,7 @@ public class ArticleSqlProvider {
             sql.SET("subtitle = #{record.subtitle,jdbcType=VARCHAR}");
         }
         
-        if (record.getImgurl() != null) {
+        if (record.getImgUrl() != null) {
             sql.SET("imgUrl = #{record.imgUrl,jdbcType=VARCHAR}");
         }
         
@@ -200,7 +200,7 @@ public class ArticleSqlProvider {
             sql.SET("subtitle = #{subtitle,jdbcType=VARCHAR}");
         }
         
-        if (record.getImgurl() != null) {
+        if (record.getImgUrl() != null) {
             sql.SET("imgUrl = #{imgUrl,jdbcType=VARCHAR}");
         }
         
